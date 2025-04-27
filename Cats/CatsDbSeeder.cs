@@ -49,18 +49,18 @@ public sealed class CatsDbSeeder
         new Personality { Id = Guid.Parse("018f84c6-8c04-7a51-8712-92a8f740ce3b"), Name = "quiet" },
     ];
 
-    private readonly Cat[] expectedCats = 
+    private readonly Breed[] expectedCats = 
     [
-        new Cat { Id = Guid.Parse("018f84d0-8c05-7a52-81e9-9c35e1d8b1b2"), Name = "Maine Coon", Description = "One of the largest domestic cat breeds, the Maine Coon is known for its tufted ears, bushy tail, and dog-like loyalty. It's affectionate but not overly needy.", Size = CatSize.Large, MinWeight = 5, MaxWeight = 11 },
-        new Cat { Id = Guid.Parse("018f84d0-8c05-7a53-8a1e-84748c6a69a0"), Name = "Siamese", Description = "Siamese cats are famous for their striking blue almond-shaped eyes and pointed coloration. They are very people-oriented and love conversation.", Size = CatSize.Medium, MinWeight = 3, MaxWeight = 6 },
-        new Cat { Id = Guid.Parse("018f84d0-8c05-7a54-9d28-8c1ab7ee034d"), Name = "British Shorthair", Description = "With a round face and chubby cheeks, the British Shorthair is often described as a \"teddy bear.\" They are quiet companions who enjoy lounging.", Size = CatSize.MediumToLarge, MinWeight = 4, MaxWeight = 8 },
-        new Cat { Id = Guid.Parse("018f84d0-8c05-7a55-8c94-9ba0a74b8a27"), Name = "Bengal", Description = "Bengals look like miniature leopards with their distinctive spotted coats. They are highly active, intelligent, and love interactive play.", Size = CatSize.MediumToLarge, MinWeight = 4, MaxWeight = 7 },
-        new Cat { Id = Guid.Parse("018f84d0-8c05-7a56-9795-b20cf77a5e48"), Name = "Ragdoll", Description = "Ragdolls are named for their tendency to go limp when picked up. They are incredibly docile and loving, making them great lap cats.", Size = CatSize.Large, MinWeight = 4, MaxWeight = 9 },
-        new Cat { Id = Guid.Parse("018f84d0-8c05-7a57-89be-b760f8ea5e4d"), Name = "Sphynx", Description = "Sphynx cats are famous for their lack of fur and wrinkled skin. They are extremely affectionate, often following their humans everywhere.", Size = CatSize.Medium, MinWeight = 3, MaxWeight = 6 },
-        new Cat { Id = Guid.Parse("018f84d0-8c05-7a58-9b0a-b2cc7f9e6893"), Name = "Scottish Fold", Description = "Recognizable by their folded ears, Scottish Folds are easygoing and love cuddles. They often sit in odd, adorable poses (\"the Buddha sit\").", Size = CatSize.Medium, MinWeight = 3, MaxWeight = 6 },
-        new Cat { Id = Guid.Parse("018f84d0-8c05-7a59-93fe-99b43a9edc12"), Name = "Norwegian Forest Cat", Description = "Native to Scandinavia, these cats are built for cold climates. They have a powerful build and love heights, often scaling tall furniture.", Size = CatSize.Large, MinWeight = 5, MaxWeight = 9 },
-        new Cat { Id = Guid.Parse("018f84d0-8c05-7a5a-978d-87e4af1d7b51"), Name = "Abyssinian", Description = "One of the oldest cat breeds, Abyssinians are known for their active, adventurous spirit and beautiful ticked coat that shimmers in the light.", Size = CatSize.Medium, MinWeight = 3, MaxWeight = 5 },
-        new Cat { Id = Guid.Parse("018f84d0-8c05-7a5b-92b1-b72cfc416edd"), Name = "Persian", Description = "Persians are iconic for their long flowing coats and flat faces. They are gentle souls who enjoy lounging in serene environments.", Size = CatSize.MediumToLarge, MinWeight = 4, MaxWeight = 7 },
+        new Breed { Id = Guid.Parse("018f84d0-8c05-7a52-81e9-9c35e1d8b1b2"), Name = "Maine Coon", Description = "One of the largest domestic cat breeds, the Maine Coon is known for its tufted ears, bushy tail, and dog-like loyalty. It's affectionate but not overly needy.", Size = CatSize.Large, MinWeight = 5, MaxWeight = 11 },
+        new Breed { Id = Guid.Parse("018f84d0-8c05-7a53-8a1e-84748c6a69a0"), Name = "Siamese", Description = "Siamese cats are famous for their striking blue almond-shaped eyes and pointed coloration. They are very people-oriented and love conversation.", Size = CatSize.Medium, MinWeight = 3, MaxWeight = 6 },
+        new Breed { Id = Guid.Parse("018f84d0-8c05-7a54-9d28-8c1ab7ee034d"), Name = "British Shorthair", Description = "With a round face and chubby cheeks, the British Shorthair is often described as a \"teddy bear.\" They are quiet companions who enjoy lounging.", Size = CatSize.MediumToLarge, MinWeight = 4, MaxWeight = 8 },
+        new Breed { Id = Guid.Parse("018f84d0-8c05-7a55-8c94-9ba0a74b8a27"), Name = "Bengal", Description = "Bengals look like miniature leopards with their distinctive spotted coats. They are highly active, intelligent, and love interactive play.", Size = CatSize.MediumToLarge, MinWeight = 4, MaxWeight = 7 },
+        new Breed { Id = Guid.Parse("018f84d0-8c05-7a56-9795-b20cf77a5e48"), Name = "Ragdoll", Description = "Ragdolls are named for their tendency to go limp when picked up. They are incredibly docile and loving, making them great lap cats.", Size = CatSize.Large, MinWeight = 4, MaxWeight = 9 },
+        new Breed { Id = Guid.Parse("018f84d0-8c05-7a57-89be-b760f8ea5e4d"), Name = "Sphynx", Description = "Sphynx cats are famous for their lack of fur and wrinkled skin. They are extremely affectionate, often following their humans everywhere.", Size = CatSize.Medium, MinWeight = 3, MaxWeight = 6 },
+        new Breed { Id = Guid.Parse("018f84d0-8c05-7a58-9b0a-b2cc7f9e6893"), Name = "Scottish Fold", Description = "Recognizable by their folded ears, Scottish Folds are easygoing and love cuddles. They often sit in odd, adorable poses (\"the Buddha sit\").", Size = CatSize.Medium, MinWeight = 3, MaxWeight = 6 },
+        new Breed { Id = Guid.Parse("018f84d0-8c05-7a59-93fe-99b43a9edc12"), Name = "Norwegian Forest Cat", Description = "Native to Scandinavia, these cats are built for cold climates. They have a powerful build and love heights, often scaling tall furniture.", Size = CatSize.Large, MinWeight = 5, MaxWeight = 9 },
+        new Breed { Id = Guid.Parse("018f84d0-8c05-7a5a-978d-87e4af1d7b51"), Name = "Abyssinian", Description = "One of the oldest cat breeds, Abyssinians are known for their active, adventurous spirit and beautiful ticked coat that shimmers in the light.", Size = CatSize.Medium, MinWeight = 3, MaxWeight = 5 },
+        new Breed { Id = Guid.Parse("018f84d0-8c05-7a5b-92b1-b72cfc416edd"), Name = "Persian", Description = "Persians are iconic for their long flowing coats and flat faces. They are gentle souls who enjoy lounging in serene environments.", Size = CatSize.MediumToLarge, MinWeight = 4, MaxWeight = 7 },
     ];
 
     private readonly Dictionary<Guid, List<Guid>> expectedCatCoats = new()
@@ -97,7 +97,7 @@ public sealed class CatsDbSeeder
         
         var personalities = Seed(dbContext, dbContext.Personalities, expectedPersonalities);
         
-        var cats = Seed(dbContext, dbContext.Cats.Include(c => c.Coats).Include(c => c.Personalities), expectedCats);
+        var cats = Seed(dbContext, dbContext.Breeds.Include(c => c.Coats).Include(c => c.Personalities), expectedCats);
 
         foreach (var cat in cats)
         {
@@ -139,7 +139,7 @@ public sealed class CatsDbSeeder
         
         var personalities = await SeedAsync(dbContext, dbContext.Personalities, expectedPersonalities, ct);
         
-        var cats = await SeedAsync(dbContext, dbContext.Cats.Include(c => c.Coats).Include(c => c.Personalities), expectedCats, ct);
+        var cats = await SeedAsync(dbContext, dbContext.Breeds.Include(c => c.Coats).Include(c => c.Personalities), expectedCats, ct);
 
         foreach (var cat in cats)
         {

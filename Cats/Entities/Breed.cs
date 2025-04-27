@@ -1,6 +1,6 @@
 ﻿namespace Cats.Entities;
 
-public class Cat : IIdentifiable
+public class Breed : IIdentifiable
 {
     public Guid Id { get; set; }
     public string Name { get; set; } = string.Empty;

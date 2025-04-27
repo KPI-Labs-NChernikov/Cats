@@ -5,7 +5,7 @@ namespace Cats;
 
 public sealed class CatsDbContext(DbContextOptions<CatsDbContext> options) : DbContext(options)
 {
-    public DbSet<Cat> Cats { get; set; } 
+    public DbSet<Breed> Breeds { get; set; } 
     public DbSet<Coat> Coats { get; set; } 
     public DbSet<Personality> Personalities { get; set; }
     
@@ -13,20 +13,20 @@ public sealed class CatsDbContext(DbContextOptions<CatsDbContext> options) : DbC
     {
         base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<Cat>()
+        modelBuilder.Entity<Breed>()
             .Property(c => c.Name)
             .HasMaxLength(100);
-        modelBuilder.Entity<Cat>()
+        modelBuilder.Entity<Breed>()
             .HasIndex(c => c.Name)
             .IsUnique();
-        modelBuilder.Entity<Cat>()
+        modelBuilder.Entity<Breed>()
             .HasMany(e => e.Coats)
-            .WithMany(e => e.Cats)
-            .UsingEntity("CatsCoats");
-        modelBuilder.Entity<Cat>()
+            .WithMany(e => e.Breeds)
+            .UsingEntity("BreedsCoats");
+        modelBuilder.Entity<Breed>()
             .HasMany(e => e.Personalities)
-            .WithMany(e => e.Cats)
-            .UsingEntity("CatsPersonalities");
+            .WithMany(e => e.Breeds)
+            .UsingEntity("BreedsPersonalities");
         
         modelBuilder.Entity<Coat>()
             .Property(c => c.Name)

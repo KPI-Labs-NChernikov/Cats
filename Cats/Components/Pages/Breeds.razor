@@ -16,7 +16,7 @@
     
     <div class="row my-3">
         <div class="col">
-            @if (_cats == null)
+            @if (_breeds == null)
             {
                 <div class="spinner-border text-primary" role="status">
                     <span class="sr-only">Loading...</span>
@@ -26,7 +26,7 @@
             {
                 <div class="d-flex flex-wrap gap-5">
                     
-                    @foreach (var cat in _cats)
+                    @foreach (var cat in _breeds)
                     {
                         <div class="card" style="width: 25rem;">
                             <img class="card-img-top" src="assets/cat-solid.svg" alt="Card image cap" style="height: 15rem; object-fit: contain;">
@@ -51,14 +51,14 @@
 </div>
 
 @code {
-    private IReadOnlyList<Cat>? _cats;
+    private IReadOnlyList<Breed>? _breeds;
     private const int _maxItems = 100;
 
     protected override async Task OnInitializedAsync()
     {
         await using var dbContext = await DbContextFactory.CreateDbContextAsync();
 
-        _cats = await dbContext.Cats
+        _breeds = await dbContext.Breeds
             .Include(c => c.Coats)
             .Include(c => c.Personalities)
             .OrderByDescending(c => c.Id)
