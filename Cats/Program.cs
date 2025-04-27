@@ -1,6 +1,10 @@
+using System.Globalization;
 using Cats;
 using Cats.Components;
 using Microsoft.EntityFrameworkCore;
+
+CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
 var builder = WebApplication.CreateBuilder(args);
 
