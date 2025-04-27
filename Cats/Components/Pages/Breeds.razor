@@ -1,0 +1,66 @@
+﻿@page "/breeds"
+@using Cats.Entities
+@using Microsoft.EntityFrameworkCore
+@rendermode InteractiveServer
+@inject IDbContextFactory<CatsDbContext> DbContextFactory
+
+<PageTitle>Cat breeds</PageTitle>
+
+<div class="container">
+
+    <div class="row my-3">
+        <div class="col">
+            <h1>Cat breeds</h1>
+        </div>
+    </div>
+    
+    <div class="row my-3">
+        <div class="col">
+            @if (_cats == null)
+            {
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            }
+            else
+            {
+                <div class="d-flex flex-wrap gap-5">
+                    
+                    @foreach (var cat in _cats)
+                    {
+                        <div class="card" style="width: 25rem;">
+                            <img class="card-img-top" src="assets/cat-solid.svg" alt="Card image cap" style="height: 15rem; object-fit: contain;">
+                            <div class="card-body">
+                                <h5 class="card-title text-truncate">@cat.Name</h5>
+                                <p class="card-text text-truncate-9">@cat.Description</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-truncate">Size: Medium to large</li>
+                                <li class="list-group-item text-truncate">Weight: @cat.MinWeight.ToString("#.#") – @cat.MaxWeight.ToString("#.#") kg</li>
+                                <li class="list-group-item text-truncate">Coat: @string.Join(", ", cat.Coats.Select(c => c.Name))</li>
+                                <li class="list-group-item text-truncate">Personality: @string.Join(", ", cat.Personalities.Select(c => c.Name))</li>
+                            </ul>
+                        </div>
+                    }
+
+                </div>   
+            }
+        </div>
+    </div>
+
+</div>
+
+@code {
+    private IReadOnlyList<Cat>? _cats = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await using var dbContext = await DbContextFactory.CreateDbContextAsync();
+
+        _cats = await dbContext.Cats
+            .Include(c => c.Coats)
+            .Include(c => c.Personalities)
+            .OrderByDescending(c => c.Id)
+            .ToListAsync();
+    }
+}

@@ -1,0 +1,59 @@
+﻿@using System.Runtime.InteropServices
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@inject Microsoft.AspNetCore.Hosting.Server.IServer Server
+@page "/"
+
+<PageTitle>Cats</PageTitle>
+
+<div class="container">
+
+    <div class="row my-3">
+        <div class="col">
+            <h1>Your Ultimate Cat Haven</h1>
+        </div></div>
+    
+    <div class="row my-3">
+        <div class="col">
+            <p class="text-muted">My IP Address is @ServerAddress <br/> Server software is @ServerName ( @($"{ServerOSDescription} {ServerOSArchitecture}".Trim()) ) @ServerFramework</p>
+        </div>
+    </div>
+
+    <div class="row my-3">
+<div class="col col-lg-8">
+<img src="assets/main-cat.jpg" class="img-fluid" alt="Cat photo"/>
+</div></div>
+
+<div class="row my-3">
+    <div class="col">
+<p class="h4">Discover a world dedicated to the beauty, charm, and mystery of cats. From expert care tips and breed guides to heartwarming stories and the latest in cat health and behavior research, we bring you everything you need to celebrate your feline companions. Whether you're a lifelong cat lover or a curious newcomer, our community offers advice, inspiration, and a shared love for these incredible creatures.
+Join us and explore the magic of cats — one paw at a time!</p>
+</div></div>
+
+</div>
+
+@code
+{
+    private string ServerAddress = string.Empty;
+    private string ServerName = string.Empty;
+    private string ServerOSDescription = string.Empty;
+    private string ServerOSArchitecture = string.Empty;
+    private string ServerFramework = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var httpContext = HttpContextAccessor.HttpContext!;
+        ServerAddress = httpContext.Connection.LocalIpAddress?.MapToIPv4().ToString() ?? "Unknown address";
+        
+        var serverType = Server.GetType().Name;
+        if (serverType.Contains("Kestrel"))
+            ServerName = "Kestrel";
+        else if (serverType.Contains("IIS"))
+            ServerName = "IIS";
+        else
+            ServerName = serverType;
+        ServerOSDescription = RuntimeInformation.OSDescription;
+        ServerOSArchitecture = RuntimeInformation.OSArchitecture.ToString();
+        ServerFramework = RuntimeInformation.FrameworkDescription;
+    }
+}
