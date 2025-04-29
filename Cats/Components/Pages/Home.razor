@@ -15,7 +15,7 @@
     
     <div class="row my-3">
         <div class="col">
-            <p class="text-muted">My IP Address is @ServerAddress <br/> Server software is @ServerName ( @($"{ServerOSDescription} {ServerOSArchitecture}".Trim()) ) @ServerFramework</p>
+            <p class="text-muted">My IP Address is @_serverAddress <br/> Server software is @_serverName ( @($"{_serverOsDescription} {_serverOsArchitecture}".Trim()) ) @_serverFramework</p>
         </div>
     </div>
 
@@ -34,26 +34,28 @@ Join us and explore the magic of cats — one paw at a time!</p>
 
 @code
 {
-    private string ServerAddress = string.Empty;
-    private string ServerName = string.Empty;
-    private string ServerOSDescription = string.Empty;
-    private string ServerOSArchitecture = string.Empty;
-    private string ServerFramework = string.Empty;
+    private string _serverAddress = string.Empty;
+    private string _serverName = string.Empty;
+    private string _serverOsDescription = string.Empty;
+    private string _serverOsArchitecture = string.Empty;
+    private string _serverFramework = string.Empty;
 
-    protected override async Task OnInitializedAsync()
+    protected override Task OnInitializedAsync()
     {
         var httpContext = HttpContextAccessor.HttpContext!;
-        ServerAddress = httpContext.Connection.LocalIpAddress?.MapToIPv4().ToString() ?? "Unknown address";
+        _serverAddress = httpContext.Connection.LocalIpAddress?.MapToIPv4().ToString() ?? "Unknown address";
         
         var serverType = Server.GetType().Name;
         if (serverType.Contains("Kestrel"))
-            ServerName = "Kestrel";
+            _serverName = "Kestrel";
         else if (serverType.Contains("IIS"))
-            ServerName = "IIS";
+            _serverName = "IIS";
         else
-            ServerName = serverType;
-        ServerOSDescription = RuntimeInformation.OSDescription;
-        ServerOSArchitecture = RuntimeInformation.OSArchitecture.ToString();
-        ServerFramework = RuntimeInformation.FrameworkDescription;
+            _serverName = serverType;
+        _serverOsDescription = RuntimeInformation.OSDescription;
+        _serverOsArchitecture = RuntimeInformation.OSArchitecture.ToString();
+        _serverFramework = RuntimeInformation.FrameworkDescription;
+
+        return Task.CompletedTask;
     }
 }

@@ -52,7 +52,7 @@
 
 @code {
     private IReadOnlyList<Breed>? _breeds;
-    private const int _maxItems = 100;
+    private const int MaxItems = 100;
 
     protected override async Task OnInitializedAsync()
     {
@@ -63,7 +63,7 @@
             .Include(c => c.Coats)
             .Include(c => c.Personalities)
             .OrderByDescending(c => c.Id)
-            .Take(_maxItems)
+            .Take(MaxItems)
             .ToListAsync();
     }
 
