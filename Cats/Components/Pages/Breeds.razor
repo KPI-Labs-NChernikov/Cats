@@ -59,6 +59,7 @@
         await using var dbContext = await DbContextFactory.CreateDbContextAsync();
 
         _breeds = await dbContext.Breeds
+            .AsNoTracking()
             .Include(c => c.Coats)
             .Include(c => c.Personalities)
             .OrderByDescending(c => c.Id)
