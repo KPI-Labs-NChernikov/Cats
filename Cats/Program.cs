@@ -1,6 +1,7 @@
 using System.Globalization;
 using Cats;
 using Cats.Components;
+using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using Microsoft.EntityFrameworkCore;
 
 CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
@@ -52,6 +53,8 @@ if (runMigrations)
 
 
 app.UseAntiforgery();
+
+StaticWebAssetsLoader.UseStaticWebAssets(app.Environment, app.Configuration);
 
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
