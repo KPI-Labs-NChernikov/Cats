@@ -29,7 +29,7 @@
                     @foreach (var cat in _breeds)
                     {
                         <div class="card" style="width: 25rem;">
-                            <img class="card-img-top" src="assets/cat-solid.svg" alt="Card image cap" style="height: 15rem; object-fit: contain;">
+                            <img class="card-img-top" src="@(!string.IsNullOrEmpty(cat.ImagePath) ? $"images/{cat.ImagePath}" : "assets/cat-solid.svg")" alt="Card image cap" style="height: 15rem; object-fit: contain;">
                             <div class="card-body">
                                 <h5 class="card-title text-truncate">@cat.Name</h5>
                                 <p class="card-text text-truncate-9">@cat.Description</p>

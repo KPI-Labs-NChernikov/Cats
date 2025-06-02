@@ -8,6 +8,7 @@ public class Breed : IIdentifiable
     public decimal MinWeight { get; set; }
     public decimal MaxWeight { get; set; }
     public CatSize Size { get; set; }
+    public string? ImagePath { get; set; }
     
     public IList<Coat> Coats { get; set; } = new List<Coat>();
     public IList<Personality> Personalities { get; set; } = new List<Personality>();

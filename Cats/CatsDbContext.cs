@@ -27,6 +27,9 @@ public sealed class CatsDbContext(DbContextOptions<CatsDbContext> options) : DbC
             .HasMany(e => e.Personalities)
             .WithMany(e => e.Breeds)
             .UsingEntity("BreedsPersonalities");
+        modelBuilder.Entity<Breed>()
+            .Property(c => c.ImagePath)
+            .HasMaxLength(255);
         
         modelBuilder.Entity<Coat>()
             .Property(c => c.Name)
